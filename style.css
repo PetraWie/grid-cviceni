@@ -1,0 +1,74 @@
+/* nejsme vcerejsi, pouzivame moderni box model */
+*, :after, :before { box-sizing: border-box; }
+
+body {
+	font-family: sans-serif;
+}
+
+.sloupec {
+	padding: 20px;
+}
+
+.hlavicka	{ background-color: #2ecc71; }
+.obsah		{ background-color: #f1c40f; }
+.menu		{ background-color: #3498db; }
+.reklama1	{ background-color: #e74c3c; }
+.reklama2	{ background-color: #12cbC4; }
+.paticka	{ background-color: #9b59b6; }
+
+/* ---------------------------------------------------- */
+
+/* ----------------- mobil -------------------------- */
+.kontejner {
+	display: grid;
+	gap: 20px;
+
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 200px repeat(3, auto) 100px;
+
+	grid-template-areas: 
+		"hlavicka 	hlavicka"
+		"obsah 		obsah"
+		"menu 		menu"
+		"reklama1 	reklama2"
+		"paticka 	paticka";
+}
+
+/* --------------------- tablet -------------------------- */
+
+
+@media screen and (min-width: 768px) {
+	.kontejner {
+	grid-template-columns: 200px 1fr 1fr;
+	grid-template-rows: 200px auto auto 100px;
+
+	grid-template-areas: /* záměrně na řádcích roztáhnuto, aby bylo vidět, 
+	jak to pasuje pod sebou - v podstatě taková šablona gridu:-)  */
+		"hlavicka 	hlavicka 	hlavicka"
+		"menu 		obsah 		obsah"
+		"menu 		reklama1 	reklama2"
+		"paticka 	paticka 	paticka";
+	}
+}
+
+/* ------------------------ počítač ---------------------- */
+@media screen and (min-width: 1000px) {
+	.kontejner {
+	grid-template-columns: 200px 1fr 250px;
+	grid-template-rows: 200px auto auto 100px;
+
+	grid-template-areas: /* záměrně na řádcích roztáhnuto, aby bylo vidět, 
+	jak to pasuje pod sebou - v podstatě taková šablona gridu:-)  */
+		"hlavicka 	hlavicka 	hlavicka"
+		"menu 		obsah 		reklama1"
+		"menu 		obsah 		reklama2"
+		"paticka 	paticka 	paticka";
+	}
+}
+
+.hlavicka { grid-area: hlavicka; }
+.menu { grid-area: menu; }
+.obsah { grid-area: obsah; }
+.reklama1 { grid-area: reklama1; }
+.reklama2 { grid-area: reklama2; }
+.paticka { grid-area: paticka; }
